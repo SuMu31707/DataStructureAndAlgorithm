@@ -39,7 +39,7 @@ public class TwoSumByOrder {
     public static int[] twoPoint(int[] nums, int target) {
         int low = 0, high = nums.length - 1;
         int[] res = new int[2];
-        for (int i = 0; i < nums.length; i++) {
+        while (low < high) {
             int sum = nums[low] + nums[high];
             if (sum == target) {
                 res[0] = low;
