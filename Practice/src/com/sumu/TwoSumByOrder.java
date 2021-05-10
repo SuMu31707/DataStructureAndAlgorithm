@@ -10,7 +10,7 @@ import java.util.Arrays;
  */
 public class TwoSumByOrder {
     public static void main(String[] args) {
-        System.out.println("二分查找算法：" + Arrays.toString(binarySearch(new int[]{1, 2, 3, 4, 5, 6}, 10)));
+        System.out.println("二分查找算法：" + Arrays.toString(binarySearch(new int[]{45,46,67,73,74,74,77,83,89,98}, 147)));
         System.out.println("双指针算法：" + Arrays.toString(twoPoint(new int[]{1, 2, 3, 4, 5, 6}, 10)));
     }
 
@@ -25,7 +25,7 @@ public class TwoSumByOrder {
                     res[0] = i;
                     res[1] = mid;
                     return res;
-                } else if (nums[mid] > target) {
+                } else if (nums[mid] > target -nums[i]) {
                     high = mid - 1;
                 } else {
                     low = mid + 1;
