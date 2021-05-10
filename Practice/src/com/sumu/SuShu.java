@@ -16,7 +16,8 @@ public class SuShu {
 
 
     private static boolean isPrime(int x) {
-        for (int i = 2; i < x; i++) {
+        // 将i<n优化成i*i<n，只判断到根号x
+        for (int i = 2; i * i <= x; i++) {
             if (x % i == 0) {
                 return false;
             }
