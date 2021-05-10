@@ -43,6 +43,7 @@ public class SuShu {
             if (!isPrime[i]) {
                 count++;
                 for (int j = i * i; j < n; j += i) {
+                    // j就是合数的位置
                     isPrime[j] = true;
                 }
             }
