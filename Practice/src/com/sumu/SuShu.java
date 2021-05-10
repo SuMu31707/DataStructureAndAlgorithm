@@ -1,5 +1,8 @@
 package com.sumu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 题目：统计n以内的素数个数
  * 素数：只能被1和自身整除的自然数，0和1除外
@@ -9,7 +12,7 @@ package com.sumu;
 public class SuShu {
     public static void main(String[] args) {
         System.out.println("暴力算法统计结果：" + bf(100));
-        System.out.println("暴力算法统计结果：" + eratosthenes(100));
+        System.out.println("埃塞法统计结果：" + eratosthenes(100));
     }
 
     // 暴力算法统计素数个数
@@ -42,6 +45,7 @@ public class SuShu {
         for (int i = 2; i < n; i++) {
             if (!isPrime[i]) {
                 count++;
+                // 此处 j = i*i会造成j溢出int的最大值
                 for (int j = i * i; j < n; j += i) {
                     // j就是合数的位置
                     isPrime[j] = true;
