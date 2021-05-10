@@ -7,7 +7,8 @@ package com.sumu;
  */
 public class SqrtX {
     public static void main(String[] args) {
-        System.out.println(binarySearch(81));
+        System.out.println(binarySearch(6));
+        System.out.println(binarySearch(6));
     }
 
     // 二分查找法
@@ -26,5 +27,19 @@ public class SqrtX {
     }
 
     // 牛顿迭代法
+    public static int newton(int x) {
+        if (x == 0){
+            return 0;
+        }
+        return (int) sqrt(x,x);
+    }
 
+    public static double sqrt(double i, int x) {
+        double res = (i + x / i) / 2;
+        if (res == i) {
+            return i;
+        } else {
+            return sqrt(res, x);
+        }
+    }
 }
