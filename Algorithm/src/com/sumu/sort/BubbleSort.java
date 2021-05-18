@@ -8,8 +8,12 @@ import java.util.Arrays;
 public class BubbleSort {
     public static void main(String[] args) {
         int arr[] = {3, 9, -1, 10, 20};
-//        int arr[] = {1, 2, 3, 4, 5};
+
+        System.out.println("排序前：");
+        System.out.println(Arrays.toString(arr));
         bubbleSort(arr);
+        System.out.println("排序后：");
+        System.out.println(Arrays.toString(arr));
     }
 
     // 将冒泡排序封装成方法
@@ -26,8 +30,8 @@ public class BubbleSort {
                     arr[j + 1] = temp;
                 }
             }
-            System.out.println("第"+(i+1)+"趟排序结果：");
-            System.out.println(Arrays.toString(arr));
+//            System.out.println("第" + (i + 1) + "趟排序结果：");
+//            System.out.println(Arrays.toString(arr));
             if (!flag) {
                 break;
             } else {
