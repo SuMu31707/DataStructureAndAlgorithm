@@ -12,11 +12,13 @@ public class InsertSort {
     }
 
     public static void insertSort(int[] arr) {
+        int insertValue = 0;
+        int insertIndex = 0;
         for (int i = 1; i < arr.length; i++) {
             // 定义待插入的数据
-            int insertValue = arr[i];
+            insertValue = arr[i];
             // arr[i]前面这个数的下标
-            int insertIndex = i - 1;
+            insertIndex = i - 1;
             /**
              * 给insertValue找到要插入的位置
              * 1.insertIndex >= 0 保证给insertValue找插入位置不越界
