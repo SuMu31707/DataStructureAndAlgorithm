@@ -7,11 +7,19 @@ public class SingleLinkedListDemo {
         StudentNode stu2 = new StudentNode(2, "LiLi", "女");
         StudentNode stu3 = new StudentNode(3, "ZhangSan", "男");
         StudentNode stu4 = new StudentNode(4, "Lisa", "女");
-        singleLinkedList.add(stu1);
-        singleLinkedList.add(stu2);
-        singleLinkedList.add(stu3);
-        singleLinkedList.add(stu4);
+//        singleLinkedList.add(stu1);
+//        singleLinkedList.add(stu2);
+//        singleLinkedList.add(stu3);
+//        singleLinkedList.add(stu4);
+        singleLinkedList.addBySort(stu1);
+        singleLinkedList.addBySort(stu4);
+        singleLinkedList.addBySort(stu3);
+        singleLinkedList.addBySort(stu2);
 
+        System.out.println("修改前：");
+        singleLinkedList.list();
+        singleLinkedList.update(new StudentNode(5, "LiSi", "男"));
+        System.out.println("修改后：");
         singleLinkedList.list();
     }
 }
@@ -29,6 +37,56 @@ class SingleLinkedList {
             temp = temp.next;
         }
         temp.next = studentNode;
+    }
+
+    public void addBySort(StudentNode studentNode) {
+        StudentNode temp = head;
+        boolean flag = false;
+        while (true) {
+            if (temp.next == null) {
+                break;
+            }
+            if (temp.next.no > studentNode.no) {
+                break;
+            } else if (temp.next.no == studentNode.no) {
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        if (flag) {
+            System.out.printf("准备插入的学生编号 %d 已经存在，不能添加！\n", studentNode.no);
+        } else {
+            studentNode.next = temp.next;
+            temp.next = studentNode;
+        }
+    }
+
+    public void update(StudentNode studentNode) {
+        if (head.next == null) {
+            System.out.println("链表为空！");
+            return;
+        }
+
+        StudentNode temp = head.next;
+        boolean flag = false;
+        while (true) {
+            if (temp == null) {
+                break;
+            }
+            if (temp.no == studentNode.no) {
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+
+        if (flag) {
+            temp.name = studentNode.name;
+            temp.sex = studentNode.sex;
+        } else {
+            System.out.println("未找到编号为：" + studentNode.no + " 的学生！");
+        }
     }
 
     public void list() {
