@@ -1,5 +1,7 @@
 package com.sumu.linkedlist;
 
+import java.util.HashMap;
+
 public class SingleLinkedListDemo {
     public static void main(String[] args) {
         SingleLinkedList singleLinkedList = new SingleLinkedList();
@@ -16,10 +18,17 @@ public class SingleLinkedListDemo {
         singleLinkedList.addBySort(stu3);
         singleLinkedList.addBySort(stu2);
 
-        System.out.println("修改前：");
+        /*System.out.println("修改前：");
         singleLinkedList.list();
-        singleLinkedList.update(new StudentNode(5, "LiSi", "男"));
+        singleLinkedList.update(new StudentNode(4, "LiSi", "男"));
         System.out.println("修改后：");
+        singleLinkedList.list();*/
+
+        System.out.println("删除前：");
+        singleLinkedList.list();
+        singleLinkedList.delete(1);
+        singleLinkedList.delete(4);
+        System.out.println("删除后：");
         singleLinkedList.list();
     }
 }
@@ -85,10 +94,29 @@ class SingleLinkedList {
             temp.name = studentNode.name;
             temp.sex = studentNode.sex;
         } else {
-            System.out.println("未找到编号为：" + studentNode.no + " 的学生！");
+            System.out.println("未找到编号为：" + studentNode.no + " 的学生，不能修改！");
         }
     }
 
+    public void delete(int no) {
+        StudentNode temp = head;
+        boolean flag = false;
+        while (true) {
+            if (temp.next == null) {
+                break;
+            }
+            if (temp.next.no == no) {
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        if (flag) {
+            temp.next = temp.next.next;
+        } else {
+            System.out.println("未找到编号为：" + no + " 的学生，不能删除！");
+        }
+    }
     public void list() {
         if (head.next == null) {
             System.out.println("链表为空！");
