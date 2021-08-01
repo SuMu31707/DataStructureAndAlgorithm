@@ -17,8 +17,9 @@ public class SingleLinkedListDemo {
 //        System.out.println("链表的有效节点个数为:" + singleLinkedList.getLength(singleLinkedList.getHead()));
         singleLinkedList.list();
         System.out.println("==============");
-        StudentNode res = singleLinkedList.findKIndex(singleLinkedList.getHead(), 3);
-        System.out.println("res="+res);
+//        StudentNode res = singleLinkedList.findKIndex(singleLinkedList.getHead(), 3);
+        singleLinkedList.revers(singleLinkedList.getHead());
+        singleLinkedList.list();
 
 
         /*singleLinkedList.addBySort(stu1);
@@ -47,6 +48,25 @@ class SingleLinkedList {
 
     public StudentNode getHead() {
         return head;
+    }
+
+    // 单链表的反转
+    public void revers(StudentNode studentNode) {
+        if (studentNode.next == null || studentNode.next.next == null) {
+            return;
+        }
+        StudentNode temp = studentNode.next;
+        StudentNode next = null;
+        StudentNode reversHead = new StudentNode(0, "", "");
+
+
+        while (temp != null) {
+            next = temp.next;
+            temp.next = reversHead.next;
+            reversHead.next = temp;
+            temp = next;
+        }
+        head.next = reversHead.next;
     }
 
     // 查找链表中倒数第k个节点
