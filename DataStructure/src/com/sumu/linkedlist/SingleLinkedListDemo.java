@@ -9,14 +9,22 @@ public class SingleLinkedListDemo {
         StudentNode stu2 = new StudentNode(2, "LiLi", "女");
         StudentNode stu3 = new StudentNode(3, "ZhangSan", "男");
         StudentNode stu4 = new StudentNode(4, "Lisa", "女");
-//        singleLinkedList.add(stu1);
-//        singleLinkedList.add(stu2);
-//        singleLinkedList.add(stu3);
-//        singleLinkedList.add(stu4);
-        singleLinkedList.addBySort(stu1);
+        singleLinkedList.add(stu1);
+        singleLinkedList.add(stu2);
+        singleLinkedList.add(stu3);
+        singleLinkedList.add(stu4);
+
+//        System.out.println("链表的有效节点个数为:" + singleLinkedList.getLength(singleLinkedList.getHead()));
+        singleLinkedList.list();
+        System.out.println("==============");
+        StudentNode res = singleLinkedList.findKIndex(singleLinkedList.getHead(), 3);
+        System.out.println("res="+res);
+
+
+        /*singleLinkedList.addBySort(stu1);
         singleLinkedList.addBySort(stu4);
         singleLinkedList.addBySort(stu3);
-        singleLinkedList.addBySort(stu2);
+        singleLinkedList.addBySort(stu2);*/
 
         /*System.out.println("修改前：");
         singleLinkedList.list();
@@ -24,18 +32,64 @@ public class SingleLinkedListDemo {
         System.out.println("修改后：");
         singleLinkedList.list();*/
 
-        System.out.println("删除前：");
+        /*System.out.println("删除前：");
         singleLinkedList.list();
         singleLinkedList.delete(1);
         singleLinkedList.delete(4);
         System.out.println("删除后：");
-        singleLinkedList.list();
+        singleLinkedList.list();*/
     }
 }
 
 class SingleLinkedList {
     // 创建头节点
     private StudentNode head = new StudentNode(0, "", "");
+
+    public StudentNode getHead() {
+        return head;
+    }
+
+    // 查找链表中倒数第k个节点
+    public StudentNode findKIndex(StudentNode studentNode, int index) {
+        if (studentNode.next == null) {
+            return null;
+        }
+
+        StudentNode temp = head.next;
+        StudentNode temp1 = head.next;
+        int total = 0;
+        while (temp != null) {
+            total ++;
+            temp = temp.next;
+        }
+
+        if (total < index) {
+            return null;
+        }
+
+        for (int i = 0; i< (total-index); i++) {
+            temp1 = temp1.next;
+        }
+
+        return temp1;
+    }
+
+    // 获取链表有效节点个数
+    public int getLength(StudentNode studentNode) {
+        if (studentNode.next == null) {
+            return 0;
+        }
+
+        StudentNode temp = head.next;
+        int len = 0;
+        while (temp != null) {
+            len ++;
+            temp = temp.next;
+        }
+
+        return len;
+    }
+
     // 创建添加的方法
     public void add(StudentNode studentNode) {
         StudentNode temp = head;
