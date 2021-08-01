@@ -1,6 +1,7 @@
 package com.sumu.linkedlist;
 
 import java.util.HashMap;
+import java.util.Stack;
 
 public class SingleLinkedListDemo {
     public static void main(String[] args) {
@@ -18,8 +19,9 @@ public class SingleLinkedListDemo {
         singleLinkedList.list();
         System.out.println("==============");
 //        StudentNode res = singleLinkedList.findKIndex(singleLinkedList.getHead(), 3);
-        singleLinkedList.revers(singleLinkedList.getHead());
-        singleLinkedList.list();
+//        singleLinkedList.revers(singleLinkedList.getHead());
+//        singleLinkedList.list();
+        singleLinkedList.reversPrint(singleLinkedList.getHead());
 
 
         /*singleLinkedList.addBySort(stu1);
@@ -48,6 +50,24 @@ class SingleLinkedList {
 
     public StudentNode getHead() {
         return head;
+    }
+
+    // 从尾到头打印单链表
+    public void reversPrint(StudentNode studentNode) {
+        if (studentNode.next == null) {
+            return;
+        }
+
+        StudentNode temp = studentNode.next;
+        Stack<StudentNode> stack = new Stack<>();
+        while (temp != null) {
+            stack.push(temp);
+            temp = temp.next;
+        }
+
+        while (stack.size() > 0) {
+            System.out.println(stack.pop());
+        }
     }
 
     // 单链表的反转
